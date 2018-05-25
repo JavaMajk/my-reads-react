@@ -6,40 +6,47 @@ import PropTypes from 'prop-types'
 class SearchBooks extends Component {
   static protoTypes = {
     query: PropTypes.string.isRequired,
-    results: PropTypes.array.isRequired
+    results: PropTypes.array.isRequired,
+    onChange: PropTypes.func.isRequired
   }
   
   state = {
     //Use 'Art' as default query so search page does not load empty
     query: 'Art',
     results: [],
-    books: []
   }
 
   componentDidMount() {
     this.listResults();
-    this.books = this.props.books;
   }
+  
+  //Compare books on my shelves with search results to displaye with correct value selected in shelf picker 
+  searchChecker = results => {
+    let checkedBooks = results;
+    this.props.books.forEach(bookOnShelve => {
+      if(typeof checkedBooks !== 'undefined' && checkedBooks.constructor === Array) {
+      checkedBooks.map(searchedBook => {
+        searchedBook.id === bookOnShelve.id ? searchedBook.shelf = bookOnShelve.shelf : searchedBook;
+      });
+    }
+    });
+    this.setState({ results: checkedBooks });
+}
 
   listResults = () => BooksAPI.search(this.state.query, 20)
   .then(results => {
-    this.setState({ results })
-    console.log(this.props.books)
+    //Send the returned results to check against books on my shelves
+    this.searchChecker(results)
    })
 
   updateQuery = newQuery => {
     //Here we use this.listResults ina a callback function. See why at: https://goo.gl/9zF1Pg
     this.setState({ query: newQuery.trim() }, () => {this.listResults()});
-    console.log(this.state.results);
   }
   
-  render() {
-    let results = this.state.results;
-    console.log(results);
-
-    
+  
+  render() {  
     return (
-
       <div className="search-books">
             <div className="search-books-bar">
              <Link to='/' className="close-search"></Link>
@@ -57,7 +64,7 @@ class SearchBooks extends Component {
                           <div className="book-top">
                             <div className="book-cover" style={((book.imageLinks) && { width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }) || { width: 128, height: 193, backgroundImage: `url(https://image.ibb.co/e8FJLo/no_cover.jpg)` }}></div>
                             <div className="book-shelf-changer">
-                            <select value={book} onChange={event => this.props.placeOnShelf(book, event.target.value)}>
+                            <select value={book.shelf} onChange={event => this.props.placeOnShelf(book, event.target.value)}>
                                 <option value="nonee" disabled>Move to...</option>
                                 <option value="none">None</option>
                                 <option value="currentlyReading">Currently Reading</option>

@@ -53,12 +53,13 @@ body, .app {
   text-align: center;
   position: fixed;
   z-index: 99999;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16)
+  box-shadow: 0 3px 6px rgba(203, 203, 203, 0.322)
 }
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
   color: white;
+  letter-spacing: 4px;
 }
 
 .list-books-content {
@@ -79,7 +80,8 @@ body, .app {
 }
 
 .bookshelf-title {
-  
+  letter-spacing: 4px;
+  font-weight: 300;
 }
 .bookshelf-books {
   text-align: center;
