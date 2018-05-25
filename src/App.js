@@ -35,7 +35,7 @@ class BooksApp extends Component {
     BooksAPI.update(book, shelf)
     .then(
     this.updateShelves(),
-    toast.success(`${book.title} sucessfuly moved!`)
+    toast.success(`${book.title} was moved!`)
   );
   } 
 

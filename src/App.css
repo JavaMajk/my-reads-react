@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -5,12 +7,12 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #c7c7c7; 
+  background: #E7E5E9; 
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(36, 39, 36);
+  background: #7B6F7A;
   border-radius: 20px; 
 }
 
@@ -21,13 +23,14 @@
 
 html, body, .root {
   height: 100%;
+  font-family: 'Raleway', sans-serif;
 }
 body {
   line-height: 1.5;
 }
 body, .app {
-  background: rgb(36, 36, 36);
-  color: rgb(210, 210, 210);
+  background: #4A4048;
+  color: #E7E5E9;
 }
 
 /* TOAST STYLING */
@@ -49,16 +52,16 @@ body, .app {
   padding: 10px 0;
   top: 0;
   width: 100%;
-  background: #2e7c31;
+  background: #C2BFC4;
   text-align: center;
   position: fixed;
   z-index: 99999;
-  box-shadow: 0 3px 6px rgba(203, 203, 203, 0.322)
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.322)
 }
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
-  color: white;
+  color: #4A4048;
   letter-spacing: 4px;
 }
 
@@ -70,7 +73,7 @@ body, .app {
 
 .bookshelf {
   padding: 0 10px 20px;
-  border-bottom: 12px solid rgb(155, 155, 155);
+  border-bottom: 2px solid rgb(155, 155, 155);
 }
 
 @media (min-width: 600px) {
@@ -119,7 +122,7 @@ body, .app {
 }
 .search-books-input-wrapper {
   flex: 1;
-  background: #e9e;
+  background: #fff;
 }
 .search-books-bar input {
   width: 100%;
@@ -166,7 +169,9 @@ body, .app {
 .book {
   width: 140px;
 }
-.book-title,
+.book-title {
+  font-size: 0.85em;
+}
 .book-authors {
   font-size: 0.8em;
 }
@@ -174,7 +179,7 @@ body, .app {
   margin-top: 10px;
 }
 .book-authors {
-  color: #999;
+  color: rgb(179, 179, 179);
 }
 
 .book-top {
@@ -191,7 +196,7 @@ body, .app {
   width: 40px;
   height: 40px;
   border-radius: 30%;
-  background: #60ac5d;
+  background: #7B6F7A;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
