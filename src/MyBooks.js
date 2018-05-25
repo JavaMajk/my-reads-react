@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
 
 class MyBooks extends Component {
   render() {
-    return (
+
+   return (
       <div className="list-books">
       <div className="list-books-title">
         <h1>MyReads</h1>
@@ -20,7 +21,7 @@ class MyBooks extends Component {
                 <li key={book.id}>
                   <div className="book">
                     <div className="book-top">
-                      <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
+                      <div className="book-cover" style={((book.imageLinks) && { width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }) || { width: 128, height: 193, backgroundImage: `url(https://image.ibb.co/e8FJLo/no_cover.jpg)` }}></div>
                       <div className="book-shelf-changer">
                         <select defaultValue='currentlyReading' onChange={event => this.props.placeOnShelf(book, event.target.value)}>
                           <option value="none" disabled>Move to...</option>
@@ -32,7 +33,7 @@ class MyBooks extends Component {
                       </div>
                     </div>
                     <div className="book-title">{book.title}</div>
-                    <div className="book-authors">{book.authors[0]}</div>
+                    <div className="book-authors">{book.authors}</div>
                   </div>
                 </li>
               )
@@ -48,7 +49,7 @@ class MyBooks extends Component {
                 <li key={book.id}>
                   <div className="book">
                     <div className="book-top">
-                      <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
+                      <div className="book-cover" style={((book.imageLinks) && { width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }) || { width: 128, height: 193, backgroundImage: `url(https://image.ibb.co/e8FJLo/no_cover.jpg)` }}></div>
                       <div className="book-shelf-changer">
                         <select defaultValue='wantToRead' onChange={event => this.props.placeOnShelf(book, event.target.value)}>
                           <option value="none" disabled>Move to...</option>
@@ -60,7 +61,7 @@ class MyBooks extends Component {
                       </div>
                     </div>
                     <div className="book-title">{book.title}</div>
-                    <div className="book-authors">{book.authors[0]}</div>
+                    <div className="book-authors">{book.authors}</div>
                   </div>
                 </li>
               )
@@ -76,7 +77,7 @@ class MyBooks extends Component {
                 <li key={book.id}>
                   <div className="book">
                     <div className="book-top">
-                      <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
+                      <div className="book-cover" style={((book.imageLinks) && { width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }) || { width: 128, height: 193, backgroundImage: `url(https://image.ibb.co/e8FJLo/no_cover.jpg)` }}></div>
                       <div className="book-shelf-changer">
                         <select defaultValue='read' onChange={event => this.props.placeOnShelf(book, event.target.value)}>
                           <option value="none" disabled>Move to...</option>
@@ -88,7 +89,7 @@ class MyBooks extends Component {
                       </div>
                     </div>
                     <div className="book-title">{book.title}</div>
-                    <div className="book-authors">{book.authors[0]}</div>
+                    <div className="book-authors">{book.authors}</div>
                   </div>
                 </li>
               )

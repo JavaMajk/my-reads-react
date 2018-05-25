@@ -4,6 +4,8 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchBooks from './SearchBooks'
 import MyBooks from './MyBooks'
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class BooksApp extends Component {
   state = {
@@ -17,21 +19,24 @@ class BooksApp extends Component {
      this.updateShelves();
   }
 
-  updateShelves() {
+  updateShelves = () => {
     BooksAPI.getAll()
     .then(books => {
-      this.setState({books})
+      this.setState({books}, () => {
       this.setState({reading: books.filter(book => book.shelf === 'currentlyReading')})
       this.setState({wantTo: books.filter(book => book.shelf === 'wantToRead')})
       this.setState({read: books.filter(book => book.shelf === 'read')})
+    })
     }
     )
   }
 
-  placeOnShelf(book, shelf) {
+  placeOnShelf = (book, shelf) => {
     BooksAPI.update(book, shelf)
-    .then(console.log(`${book.title} moved to ${shelf}`));
-    this.updateShelves();
+    .then(
+    this.updateShelves(),
+    toast.success(`${book.title} sucessfuly moved!`)
+  );
   } 
 
   render() {
@@ -41,10 +46,10 @@ class BooksApp extends Component {
           //show search page
           <SearchBooks 
             books={this.state.books}
+            placeOnShelf={this.placeOnShelf}
           />
         )}
         />
-          
          <Route exact path='/' render={() => (
            <MyBooks 
            reading={this.state.reading}
@@ -54,6 +59,8 @@ class BooksApp extends Component {
            />
         )}
         />
+        <ToastContainer className='toast-container'
+          toastClassName="dark-toast" transition={Slide} closeButton={false} hideProgressBar autoClose={2500}/>
       </div>
     )
   }

@@ -1,3 +1,24 @@
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c7c7c7; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(36, 39, 36);
+  border-radius: 20px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 html, body, .root {
   height: 100%;
 }
@@ -5,15 +26,34 @@ body {
   line-height: 1.5;
 }
 body, .app {
-  background: white;
+  background: rgb(36, 36, 36);
+  color: rgb(210, 210, 210);
+}
+
+/* TOAST STYLING */
+.toast-container {
+  margin-top: 60px;
+  margin-right: -8px;
+}
+
+.toast-container .dark-toast {
+  background: rgb(56, 65, 58);
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
 }
 
 /* main page */
 
 .list-books-title {
   padding: 10px 0;
+  top: 0;
+  width: 100%;
   background: #2e7c31;
   text-align: center;
+  position: fixed;
+  z-index: 99999;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16)
 }
 .list-books-title h1 {
   font-weight: 400;
@@ -24,20 +64,22 @@ body, .app {
 .list-books-content {
   padding: 0 0 80px;
   flex: 1;
+  margin-top: 80px;
 }
 
 .bookshelf {
   padding: 0 10px 20px;
+  border-bottom: 12px solid rgb(155, 155, 155);
 }
 
 @media (min-width: 600px) {
   .bookshelf {
-    padding: 0 20px 40px;
+    padding: 0 16px 20px;
   }
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  
 }
 .bookshelf-books {
   text-align: center;
@@ -45,8 +87,8 @@ body, .app {
 
 .open-search {
   position: fixed;
-  right: 25px;
-  bottom: 25px;
+  right: 18px;
+  bottom: 19px;
 }
 .open-search a {
   display: block;
@@ -146,7 +188,7 @@ body, .app {
   bottom: -10px;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 30%;
   background: #60ac5d;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
