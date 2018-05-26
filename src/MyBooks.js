@@ -17,7 +17,7 @@ class MyBooks extends Component {
             <h2 className="bookshelf-title">Currently Reading</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
-            {this.props.loading === 'true' ? <div className='loader'><img src='https://thumbs.gfycat.com/CooperativeCarelessGreatwhiteshark-max-1mb.gif' alt="Loading" height='150' width='150' /></div> : 
+            {this.props.loading === true ? <div className='loader'><img src='https://thumbs.gfycat.com/CooperativeCarelessGreatwhiteshark-max-1mb.gif' alt="Loading" height='150' width='150' /></div> : 
               this.props.reading.map(book => 
                 <li key={book.id}>
                   <div className="book">
@@ -47,7 +47,7 @@ class MyBooks extends Component {
             <h2 className="bookshelf-title">Want to Read</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
-              {this.props.loading === 'true' ? <div className='loader'><img src='https://thumbs.gfycat.com/CooperativeCarelessGreatwhiteshark-max-1mb.gif' alt="Loading" height='150' width='150' /></div> :
+              {this.props.loading === true ? <div className='loader'><img src='https://thumbs.gfycat.com/CooperativeCarelessGreatwhiteshark-max-1mb.gif' alt="Loading" height='150' width='150' /></div> :
                 this.props.wantTo.map(book => 
                 <li key={book.id}>
                   <div className="book">
@@ -76,7 +76,7 @@ class MyBooks extends Component {
             <h2 className="bookshelf-title">Read</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
-              {this.props.loading === 'true' ? <div className='loader'><img src='https://thumbs.gfycat.com/CooperativeCarelessGreatwhiteshark-max-1mb.gif' alt="Loading" height='150' width='150' /></div> :
+              {this.props.loading === true ? <div className='loader'><img src='https://thumbs.gfycat.com/CooperativeCarelessGreatwhiteshark-max-1mb.gif' alt="Loading" height='150' width='150' /></div> :
                 this.props.read.map(book => 
                 <li key={book.id}>
                   <div className="book">

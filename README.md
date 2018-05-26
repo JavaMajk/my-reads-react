@@ -22,6 +22,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Notifications were added with [React-toastift](https://fkhadra.github.io/react-toastify/)
 
 ## To-Do
-- [ ] Add loader spinner before books load to shelves
+- [x] Add loader spinner before books load to shelves
 - [ ] Make use of a different API to pull books from for more search results
 - [ ] Improve the current basic styling for a polished look
+- [ ] Fix up code to follow same styling and organize without having to violate DRY
