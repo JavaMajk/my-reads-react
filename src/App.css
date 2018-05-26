@@ -46,6 +46,12 @@ body, .app {
   text-align: center;
 }
 
+/* LOADER STYLING */
+
+.loader {
+  margin: 35px;
+}
+
 /* main page */
 
 .list-books-title {

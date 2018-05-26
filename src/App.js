@@ -12,16 +12,21 @@ class BooksApp extends Component {
     books: [],
     reading: [],
     wantTo: [],
-    read: []
+    read: [],
+    loading: 'true'
   }
 
   componentDidMount() {
-     this.updateShelves();
+    this.updateShelves();
+    console.log(this.state.loading)
   }
 
   updateShelves = () => {
+    
     BooksAPI.getAll()
     .then(books => {
+      this.setState({loading: 'false'})
+    console.log(this.state.loading)
       this.setState({books}, () => {
       this.setState({reading: books.filter(book => book.shelf === 'currentlyReading')})
       this.setState({wantTo: books.filter(book => book.shelf === 'wantToRead')})
@@ -56,6 +61,7 @@ class BooksApp extends Component {
            wantTo={this.state.wantTo}
            read={this.state.read}
            placeOnShelf={this.placeOnShelf}
+           loading={this.state.loading}
            />
         )}
         />
