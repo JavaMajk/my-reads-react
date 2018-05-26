@@ -11,15 +11,10 @@ class SearchBooks extends Component {
   }
   
   state = {
-    //Use 'Art' as default query so search page does not load empty
-    query: 'Art',
+    query: '',
     results: [],
   }
 
-  componentDidMount() {
-    this.listResults();
-  }
-  
   //Compare books on my shelves with search results to displaye with correct value selected in shelf picker 
   searchChecker = results => {
     let checkedBooks = results;
@@ -33,11 +28,13 @@ class SearchBooks extends Component {
     this.setState({ results: checkedBooks });
 }
 
-  listResults = () => BooksAPI.search(this.state.query, 20)
-  .then(results => {
-    //Send the returned results to check against books on my shelves
-    this.searchChecker(results)
-   })
+  listResults = () => {
+      BooksAPI.search(this.state.query, 20)
+      .then(results => {
+        //Send the returned results to check against books on my shelves
+        this.searchChecker(results)
+      })      
+  }
 
   updateQuery = newQuery => {
     //Here we use this.listResults ina a callback function. See why at: https://goo.gl/9zF1Pg
@@ -58,7 +55,7 @@ class SearchBooks extends Component {
             </div>
             <div className="search-books-results">
               <ol className="books-grid">
-                {(this.state.results) && (this.state.results.length > 0)  && this.state.results.map(book => 
+                {(this.state.query.length > 0) && (this.state.results) && (this.state.results.length > 0)  && this.state.results.map(book => 
                 <li key={book.id}>
                   <div className="book">
                           <div className="book-top">
